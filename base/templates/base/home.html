@@ -1,33 +1,68 @@
 {% extends 'main.html' %}
 
 {% block content %}
-<h1>
-    Home Template
-</h1>
-<div>
-    <a href="{% url 'create-room'  %}">
-        Yeni Başlık Oluştur
-    </a>
+
+<style>
+
+    .home-container{
+
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+    }
+
+</style>
+
+<div class="home-container">
+
+    <div>
+        <h3>
+            Konular İçinde Ara
+        </h3>
+        <hr>
+
+            <div>
+                <a href="{% url 'home' %}?q={{topic.name}}">Bütün Konular</a>
+            </div>
+            
+
+        {% for topic in topics %}
+            <div>
+                <a href="{% url 'home' %}?q={{topic.name}}">{{topic.name}}</a>
+            </div>
+        {% endfor %}
+    </div>
+
     <div>
 
-        {% for room in rooms %}
-            <div>
-                
-                <span>
-                    @{{room.host.username}}
-                </span>
-                <h5>
-                    {{room.id}} -- <a href="{% url 'room' room.id %}"> {{room.name}} </a> 
-                </h5>
-                <small>
-                    {{room.topic.name}}
-                </small>
-                <hr>
-            </div>
-
-        {% endfor %}
+        <a href="{% url 'create-room'  %}">
+            Yeni Başlık Oluştur
+        </a>
+        <div>
     
+            {% for room in rooms %}
+                <div>
+                    <a href="{% url 'update-room' room.id %}">Düzenle</a>
+                    <a href="{% url 'delete-room' room.id %}">Sil</a>
+                    <span>
+                        @{{room.host.username}}
+                    </span>
+                    <h5>
+                        {{room.id}} -- <a href="{% url 'room' room.id %}"> {{room.name}} </a> 
+                    </h5>
+                    <small>
+                        {{room.topic.name}}
+                    </small>
+                    <hr>
+                </div>
+    
+            {% endfor %}
+        
+        </div>
+
     </div>
+
+
+
 
 </div>
 {% endblock content %}

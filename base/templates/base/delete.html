@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+    <div>
+        <form method="POST" action="">
+            {% csrf_token  %}
+            <p>"{{obj}}" Silmek istediğinize emin misiniz?</p>
+            <a href="{{request.META.HTTP_REFERER}}"> Geri dön </a>
+            <input type="submit" value="Sil"/>
+        </form>
+    </div>
+
+{% endblock content %}
