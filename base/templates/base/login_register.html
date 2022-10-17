@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+<div>
+    <form method="POST" action="">
+        {% csrf_token %}
+
+        <label for="">Kullanıcı Adı:</label>
+        <input type='text' name="username" placeholder="Lütfen Kullanıcı Adı Belirleyin..." />
+
+        <label for="">Şifre:</label>
+        <input type='password' name="password" placeholder="Lütfen Şifre Belirleyin..." />
+
+
+        <input type='submit' value="Login" />
+    </form>
+</div>
+
+{% endblock content %}
