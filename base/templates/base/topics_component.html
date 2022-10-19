@@ -1,0 +1,15 @@
+<h3>
+    Konular İçinde Ara
+</h3>
+<hr>
+
+    <div>
+        <a href="{% url 'home' %}?q={{topic.name}}">Bütün Konular</a>
+    </div>
+    
+
+{% for topic in topics %}
+    <div>
+        <a href="{% url 'home' %}?q={{topic.name}}">{{topic.name}}</a>
+    </div>
+{% endfor %}
