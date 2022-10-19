@@ -3,6 +3,8 @@
 
 {% block content %}
 
+{% if page == 'login' %}
+
 <div>
     <form method="POST" action="">
         {% csrf_token %}
@@ -16,6 +18,34 @@
 
         <input type='submit' value="Login" />
     </form>
+    <p>
+        Üye Değil misiniz ?
+    </p>
+    <a href="{% url 'register' %}">
+        Üye ol
+    </a>
 </div>
+
+{% else %}
+
+<div>
+    <form method="POST" action="">
+        {% csrf_token %}
+
+        {{form.as_p}}
+
+
+        <input type='submit' value="Register" />
+    </form>
+
+    <p>
+        Zaten Üye misiniz?
+    </p>
+    <a href="{% url 'login' %}">
+        Giriş Yap
+    </a> 
+</div>
+
+{% endif %}
 
 {% endblock content %}

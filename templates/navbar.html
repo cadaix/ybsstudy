@@ -9,7 +9,11 @@
         <input type="text" name="q" placeholder="Konularda Ara..." />
    </form>
 
+   {% if request.user.is_authenticated %}
+   <p>YBS çalışma portalına hoşgeldin {{request.user}}!</p>
+   <a href="{% url 'logout' %}">Çıkış</a>
+   {% else %}
    <a href="{% url 'login' %}">Giriş</a>
-
+   {% endif %}
    <hr>
     
