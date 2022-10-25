@@ -17,22 +17,25 @@
                                 </path>
                             </svg>
                         </a>
-                        <h3>Edit your profile</h3>
+                        <h3>Profili Düzenle</h3>
                     </div>
                 </div>
                 <div class="layout__body">
                     <form class="form" action="" method="POST">
                       {% csrf_token %}
+
+                      {% for field in form %}
                         <div class="form__group">
-                            <label for="profile_pic">Avatar</label>
-                            <input id="profile_pic" name="profile_pic" type="file" />
+                            <label for="profile_pic">{{field.label}}</label>
+                            {{field}}
                         </div>
+                      {% endfor %}  
 
             
 
             
                         <div class="form__action">
-                            <a class="btn btn--dark" href="index.html">Geri</a>
+                            <a class="btn btn--dark" href="{% url 'home' %}">Geri</a>
                             <button class="btn btn--main" type="submit">Güncelle</button>
                         </div>
                     </form>

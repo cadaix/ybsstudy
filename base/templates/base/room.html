@@ -115,7 +115,11 @@
       <div class="room__message">
         <form action="" method="POST">
           {% csrf_token %}
+          
           <input name="body" placeholder="Mesajınızı yazın" />
+          <br><br>
+          <button class="btn btn--main" type="submit">Gönder</button>
+          <button class="btn btn--main" type="submit">Fotoğraf Yükle</button>
         </form>
       </div>
     </div>
